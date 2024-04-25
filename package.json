@@ -1,5 +1,5 @@
 {
-  "name": "@sussy-code/browser-ext",
+  "name": "@movie-web/extension",
   "displayName": "sudo-flix extension",
   "version": "1.1.4",
   "description": "Enhance your streaming experience with just one click",

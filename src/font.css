@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url(data-base64:~assets/inter/regular.ttf);
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: bold;
+  font-weight: 700;
+  src: url(data-base64:~assets/inter/bold.ttf);
+}
+
+body, html {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+}

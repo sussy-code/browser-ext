@@ -1,0 +1,12 @@
+{
+   "manifest_version": 3,
+   "name": "sudo-flix extension",
+   "optional_host_permissions": [ "\u003Call_urls>" ],
+   "permissions": [ "storage", "declarativeNetRequest", "activeTab", "cookies" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.1.4",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "assets/active.png", "assets/inactive.png" ]
+   } ]
+}

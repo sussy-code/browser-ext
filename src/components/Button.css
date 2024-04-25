@@ -1,0 +1,41 @@
+.button {
+  padding: 1rem;
+  border-radius: 12px;
+  border: 0;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 100ms ease-in-out, color 100ms ease-in-out, transform 100ms ease-in-out;
+}
+
+.button.full {
+  width: 100%;
+}
+
+.button, .button:focus, .button:active, .button:visited {
+  text-decoration: none;
+}
+
+.button:active {
+  transform: scale(1.05);
+}
+
+.button.button-secondary {
+  background-color: #222033;
+  color: white;
+}
+
+.button.button-secondary:hover {
+  background-color: #2c2941;
+  color: white;
+}
+
+.button.button-primary {
+  background-color: #4F328A;
+  color: white;
+}
+
+.button.button-primary:hover {
+  background-color: #5E3F9D;
+  color: white;
+}

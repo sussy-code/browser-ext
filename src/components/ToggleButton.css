@@ -1,0 +1,119 @@
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.button-wrapper {
+  width: 70px;
+  height: 70px;
+  position: relative;
+}
+
+.button-wrapper::after {
+  position: absolute;
+  z-index: 0;
+  content: '';
+  width: 120%;
+  height: 120%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(119, 66, 233, 0.25);
+  filter: blur(35px);
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.button-wrapper.active::after {
+  opacity: 1;
+}
+
+.toggle-button {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1000px;
+  overflow: hidden;
+  border: 0;
+  background-color: transparent;
+  transition: transform 50ms;
+}
+
+.inside-glow {
+  transition: transform 300ms;
+  transform: rotate(0deg);
+}
+
+.toggle-button:hover .inside-glow {
+  transform: rotate(45deg);
+}
+
+.toggle-button:active {
+  transform: scale(0.95);
+}
+
+.actual-button-style {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1000px;
+  box-sizing: border-box;
+  border-color: rgba(96, 66, 166, 0.50);
+  transition: opacity 300ms ease;
+  border: 1px solid #322E48;
+  background-image: linear-gradient(180deg, #232236 0%, #0E0D15 100%);
+}
+
+.actual-button-style.active {
+  border-color: #48307F;
+  background-image: linear-gradient(180deg, #463177 0%, #2D1C54 100%);
+}
+
+.toggle-button .inside-glow, .toggle-button svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: color 300ms, transform 300ms;
+}
+
+.toggle-button .inside-glow {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  border-radius: 1000px;
+  filter: blur(10px);
+  z-index: 1;
+}
+
+.toggle-button svg {
+  width: 35px;
+  height: 35px;
+  display: block;
+  z-index: 10;
+}
+
+.toggle-button svg * {
+  box-shadow: 0px 0px 0 4px rgba(0, 0, 0, 1) inset;
+}
+
+.button-container p {
+  color: #4A4863;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 1rem;
+}
+
+.button-container strong {
+  color: white;
+}

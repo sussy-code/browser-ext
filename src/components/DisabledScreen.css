@@ -1,0 +1,22 @@
+.disabled {
+  color: white;
+  text-align: center;
+  max-width: 230px;
+  font-size: 16px;
+}
+
+.disabled .icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  display: inline-block;
+  color: #B44868;
+}
+
+.disabled p {
+  color: #4A4864;
+}
+
+.disabled strong {
+  color: white;
+}

@@ -1,0 +1,41 @@
+.setup-screen .title {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.setup-screen .paragraph {
+  font-size: 1rem;
+  color: #666485;
+  max-width: 220px;
+}
+
+.setup-screen .top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.setup-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem;
+  text-align: center;
+}
+
+.setup-screen .icon {
+  background-color: #0b0b1b77;
+  color: #945DCC;
+  height: 40px;
+  font-size: 20px;
+  width: 40px;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}

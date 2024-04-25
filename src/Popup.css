@@ -1,0 +1,28 @@
+@import url("./font.css");
+
+html {
+  min-height: 300px;
+  min-width: 300px;
+  height: 100%;
+}
+
+body {
+  min-height: 300px;
+  min-width: 300px;
+  margin: 0;
+  height: 100%;
+  max-height: 100%;
+}
+
+.popup {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#__plasmo {
+  height: 100%;
+  background-color: #0a0a10;
+}

@@ -1,0 +1,6 @@
+.frame {
+  height: 100%;
+  width: 100%;
+  background-color: #0a080e;
+  background-image: radial-gradient(271.48% 132.05% at 136.13% 65.62%, #271945b3 0%, #1c1c2c00 100%), radial-gradient(671.15% 123.02% at 76.68% -34.38%, #272753 0%, #17172000 100%);
+}

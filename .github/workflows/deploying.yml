@@ -1,0 +1,108 @@
+name: Deploying
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+                  
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+    
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'pnpm'
+
+    - name: Install pnpm packages
+      run: pnpm install
+    
+    - name: Build chrome project
+      run: pnpm run build
+    
+    - name: Package for chrome
+      run: pnpm run package
+    
+    - name: Build firefox project
+      run: pnpm run build:firefox
+    
+    - name: Package for firefox
+      run: pnpm run package:firefox
+
+    - name: Upload chrome package
+      uses: actions/upload-artifact@v4
+      with:
+        name: chrome
+        path: ./build/chrome-mv3-prod.zip
+    
+    - name: Upload firefox package
+      uses: actions/upload-artifact@v4
+      with:
+        name: firefox
+        path: ./build/firefox-mv3-prod.zip
+
+  release:
+    name: Release
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download Chrome artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: chrome
+        path: ./chrome
+
+    - name: Download Firefox artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: firefox
+        path: ./firefox
+
+    - name: Get version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@main
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.package-version.outputs.current-version }}
+        release_name: Extension v${{ steps.package-version.outputs.current-version }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Chrome release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./chrome/chrome-mv3-prod.zip
+        asset_name: extension-mw.chrome.zip
+        asset_content_type: application/zip
+
+    - name: Upload Firefox release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./firefox/firefox-mv3-prod.zip
+        asset_name: extension-mw.firefox.xpi
+        asset_content_type: application/x-xpinstall.xpi

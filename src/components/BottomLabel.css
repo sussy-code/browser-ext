@@ -1,0 +1,26 @@
+.bottom-label {
+  position: absolute;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: normal;
+  color: #4A4863;
+  font-size: 14px;
+}
+
+.top-right-label {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  font-weight: normal;
+  color: #4A4863;
+  font-size: 14px;
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  background: currentColor;
+  border-radius: 100px;
+}

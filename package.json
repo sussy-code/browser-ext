@@ -1,9 +1,9 @@
 {
-  "name": "@movie-web/extension",
-  "displayName": "movie-web extension",
+  "name": "@sussy-code/browser-ext",
+  "displayName": "sudo-flix extension",
   "version": "1.1.4",
-  "description": "Enhance your movie-web experience with just one click",
-  "author": "movie-web",
+  "description": "Enhance your streaming experience with just one click",
+  "author": "sudo-flix",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",

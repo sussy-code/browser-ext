@@ -11,6 +11,7 @@ export const DEFAULT_DOMAIN_WHITELIST = [
   'stream.thehairy.me',
   'scootydooter.vercel.app',
   'movie-web-me.vercel.app',
+  'sudo-flix.lol',
 ];
 
 export const storage = new Storage();

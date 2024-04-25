@@ -8,7 +8,7 @@ export function BottomLabel() {
     <h3 className="bottom-label">
       {version}
       <div className="dot" />
-      movie-web
+      sudo-flix
     </h3>
   );
 }

@@ -8,7 +8,7 @@ export function DisabledScreen() {
         <Icon name="warningCircle" />
       </div>
       <p>
-        The <strong>movie-web extension</strong> can not be used on this page
+        The <strong>sudo-flix extension</strong> can not be used on this page
       </p>
     </div>
   );

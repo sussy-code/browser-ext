@@ -32,7 +32,7 @@ export default function PermissionRequest() {
           We need some <br /> browser permissions
         </h1>
         <p className="text-color paragraph">
-          We don&apos;t like it either, but the movie-web extension needs quite a few permissions to function. Listed
+          We don&apos;t like it either, but the sudo-flix extension needs quite a few permissions to function. Listed
           below is an explanation for all permissions we need.
         </p>
 
@@ -41,7 +41,7 @@ export default function PermissionRequest() {
             purple
             icon={<Icon name="github" />}
             right={
-              <Button type="secondary" href="https://github.com/movie-web/extension">
+              <Button type="secondary" href="https://github.com/sussy-code/browser-ext">
                 Read source code
               </Button>
             }
@@ -66,7 +66,7 @@ export default function PermissionRequest() {
             <h3>Network Requests</h3>
             <p className="text-color paragraph">
               This permission allows the extension to instruct the browser how to request data from sites. In more
-              technical terms, this allows movie-web to modify HTTP headers that it wouldn&apos;t normally be allowed
+              technical terms, this allows sudo-flix to modify HTTP headers that it wouldn&apos;t normally be allowed
               to.
             </p>
             <p className="text-color paragraph">

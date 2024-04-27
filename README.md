@@ -1,6 +1,6 @@
 # extension
 
-Enhance your movie-web experience with just one click
+Enhance your experience with just one click
 
 ## Running for development
 

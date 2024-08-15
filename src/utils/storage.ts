@@ -15,11 +15,11 @@ export const modifiableResponseHeaders = [
 ];
 
 const hostsWithCookiesAccess: RegExp[] = [
-  /^.*\.?ee3\.me$/,
-  /^.*\.?rips\.cc$/,
-  /^.*\.?m4ufree\.(?:tv|to|pw)$/,
-  /^.*\.?goojara\.to$/,
-  /^.*\.?levidia\.ch$/,
+  /^(?:.*\.)?ee3\.me$/,
+  /^(?:.*\.)?rips\.cc$/,
+  /^(?:.*\.)?m4ufree\.(?:tv|to|pw)$/,
+  /^(?:.*\.)?goojara\.to$/,
+  /^(?:.*\.)?levidia\.ch$/,
 ];
 
 export function canAccessCookies(host: string): boolean {

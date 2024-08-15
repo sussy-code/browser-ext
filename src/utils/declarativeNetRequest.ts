@@ -21,17 +21,6 @@ const mapHeadersToDeclarativeNetRequestHeaders = (
 };
 
 export const setDynamicRules = async (body: DynamicRule) => {
-  // restrict what response headers can be modified
-  body.responseHeaders = Object.keys(body.responseHeaders ?? {})
-    .filter((key) => modifiableResponseHeaders.includes(key.toLowerCase()))
-    .reduce(
-      (obj, key) => {
-        obj[key] = (body.responseHeaders ?? {})[key];
-        return obj;
-      },
-      {} as Record<string, string>,
-    );
-
   if (isChrome()) {
     await chrome.declarativeNetRequest.updateDynamicRules({
       removeRuleIds: [body.ruleId],

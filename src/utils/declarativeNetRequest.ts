@@ -1,4 +1,5 @@
 import { isChrome } from './extension';
+import { modifiableResponseHeaders } from './storage';
 
 interface DynamicRule {
   ruleId: number;
@@ -20,6 +21,17 @@ const mapHeadersToDeclarativeNetRequestHeaders = (
 };
 
 export const setDynamicRules = async (body: DynamicRule) => {
+  // restrict what response headers can be modified
+  body.responseHeaders = Object.keys(body.responseHeaders ?? {})
+    .filter((key) => modifiableResponseHeaders.includes(key.toLowerCase()))
+    .reduce(
+      (obj, key) => {
+        obj[key] = (body.responseHeaders ?? {})[key];
+        return obj;
+      },
+      {} as Record<string, string>,
+    );
+
   if (isChrome()) {
     await chrome.declarativeNetRequest.updateDynamicRules({
       removeRuleIds: [body.ruleId],
@@ -55,11 +67,6 @@ export const setDynamicRules = async (body: DynamicRule) => {
                 header: 'Access-Control-Allow-Headers',
                 operation: chrome.declarativeNetRequest.HeaderOperation.SET,
                 value: '*',
-              },
-              {
-                header: 'Access-Control-Allow-Credentials',
-                operation: chrome.declarativeNetRequest.HeaderOperation.SET,
-                value: 'true',
               },
               ...mapHeadersToDeclarativeNetRequestHeaders(
                 body.responseHeaders ?? {},
@@ -103,11 +110,6 @@ export const setDynamicRules = async (body: DynamicRule) => {
                 header: 'Access-Control-Allow-Headers',
                 operation: 'set',
                 value: '*',
-              },
-              {
-                header: 'Access-Control-Allow-Credentials',
-                operation: 'set',
-                value: 'true',
               },
               ...mapHeadersToDeclarativeNetRequestHeaders(body.responseHeaders ?? {}, 'set'),
             ],

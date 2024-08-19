@@ -1,4 +1,5 @@
 import { isChrome } from './extension';
+import { modifiableResponseHeaders } from './storage';
 
 interface DynamicRule {
   ruleId: number;
@@ -56,11 +57,6 @@ export const setDynamicRules = async (body: DynamicRule) => {
                 operation: chrome.declarativeNetRequest.HeaderOperation.SET,
                 value: '*',
               },
-              {
-                header: 'Access-Control-Allow-Credentials',
-                operation: chrome.declarativeNetRequest.HeaderOperation.SET,
-                value: 'true',
-              },
               ...mapHeadersToDeclarativeNetRequestHeaders(
                 body.responseHeaders ?? {},
                 chrome.declarativeNetRequest.HeaderOperation.SET,
@@ -103,11 +99,6 @@ export const setDynamicRules = async (body: DynamicRule) => {
                 header: 'Access-Control-Allow-Headers',
                 operation: 'set',
                 value: '*',
-              },
-              {
-                header: 'Access-Control-Allow-Credentials',
-                operation: 'set',
-                value: 'true',
               },
               ...mapHeadersToDeclarativeNetRequestHeaders(body.responseHeaders ?? {}, 'set'),
             ],

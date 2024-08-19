@@ -3,16 +3,31 @@ import { useStorage } from '@plasmohq/storage/hook';
 
 import { makeUrlIntoDomain } from '~utils/domains';
 
-export const DEFAULT_DOMAIN_WHITELIST = [
-  'mw.lonelil.ru',
-  'watch.qtchaos.de',
-  'bmov.app',
-  'bmov.vercel.app',
-  'stream.thehairy.me',
-  'scootydooter.vercel.app',
-  'movie-web-me.vercel.app',
-  'sudo-flix.lol',
+export const DEFAULT_DOMAIN_WHITELIST = [];
+
+export const modifiableResponseHeaders = [
+  'access-control-allow-origin',
+  'access-control-allow-methods',
+  'access-control-allow-headers',
+  'content-security-policy',
+  'content-security-policy-report-only',
+  'content-disposition',
 ];
+
+const hostsWithCookiesAccess: RegExp[] = [
+  /^(?:.*\.)?ee3\.me$/,
+  /^(?:.*\.)?rips\.cc$/,
+  /^(?:.*\.)?m4ufree\.(?:tv|to|pw)$/,
+  /^(?:.*\.)?goojara\.to$/,
+  /^(?:.*\.)?levidia\.ch$/,
+  /^(?:.*\.)?wootly\.ch$/,
+  /^(?:.*\.)?multimovies\.(?:sbs|online|cloud)$/,
+];
+
+export function canAccessCookies(host: string): boolean {
+  if (hostsWithCookiesAccess.some((regex) => regex.test(host))) return true;
+  return false;
+}
 
 export const storage = new Storage();
 

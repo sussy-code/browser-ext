@@ -5,7 +5,7 @@ import type { BaseResponse } from '~types/response';
 import { removeDynamicRules, setDynamicRules } from '~utils/declarativeNetRequest';
 import { isFirefox } from '~utils/extension';
 import { makeFullUrl } from '~utils/fetcher';
-import { assertDomainWhitelist } from '~utils/storage';
+import { assertDomainWhitelist, canAccessCookies } from '~utils/storage';
 
 const MAKE_REQUEST_DYNAMIC_RULE = 23498;
 
@@ -60,6 +60,12 @@ const handler: PlasmoMessaging.MessageHandler<Request, Response<any>> = async (r
       ruleId: MAKE_REQUEST_DYNAMIC_RULE,
       targetDomains: [new URL(url).hostname],
       requestHeaders: req.body.headers,
+      // set Access-Control-Allow-Credentials if the reqested host has access to cookies
+      responseHeaders: {
+        ...(canAccessCookies(new URL(url).hostname) && {
+          'Access-Control-Allow-Credentials': 'true',
+        }),
+      },
     });
 
     const response = await fetch(url, {
@@ -84,7 +90,10 @@ const handler: PlasmoMessaging.MessageHandler<Request, Response<any>> = async (r
         statusCode: response.status,
         headers: {
           ...Object.fromEntries(response.headers.entries()),
-          'Set-Cookie': cookies.map((cookie) => `${cookie.name}=${cookie.value}`).join(', '),
+          // include cookies if allowed for the reqested host
+          ...(canAccessCookies(new URL(url).hostname) && {
+            'Set-Cookie': cookies.map((cookie) => `${cookie.name}=${cookie.value}`).join(', '),
+          }),
         },
         body,
         finalUrl: response.url,

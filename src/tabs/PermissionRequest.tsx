@@ -76,7 +76,8 @@ export default function PermissionRequest() {
           <Card icon={<Icon name="cookie" />}>
             <h3>Read and write cookies</h3>
             <p className="text-color paragraph">
-              Some sources use cookies for authentication. We need to be able to read and set those cookies.
+              Some sources use cookies for authentication. We need to be able to read and set those cookies. The
+              extension will only be able to accees the cookies for a few sites we scrape.
             </p>
             <p className="text-color paragraph">
               You won&apos;t be prompted for this permission, it&apos;s included in “Read & change data from all sites”.

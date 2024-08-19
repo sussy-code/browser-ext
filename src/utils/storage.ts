@@ -20,6 +20,8 @@ const hostsWithCookiesAccess: RegExp[] = [
   /^(?:.*\.)?m4ufree\.(?:tv|to|pw)$/,
   /^(?:.*\.)?goojara\.to$/,
   /^(?:.*\.)?levidia\.ch$/,
+  /^(?:.*\.)?wootly\.ch$/,
+  /^(?:.*\.)?multimovies\.(?:sbs|online|cloud)$/,
 ];
 
 export function canAccessCookies(host: string): boolean {
